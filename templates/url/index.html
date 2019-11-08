@@ -1,0 +1,14 @@
+{% extends 'url/base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+	<div class="alert alert-info" style="min-width: 450px;">
+		{% if user.is_authenticated %}
+			<strong>Hi {{ user.username }}!</strong>
+  			<p><a href="{% url 'logout' %}">logout</a></p>
+		{% else %}
+			<strong>Hi Welcome Onboard, Nice to see you here, Login Required for access this portal<br/><br/>You are not Logged in, please login </strong><br/><br/>
+			<a href="{% url 'login' %}">login</a>
+		{% endif %}
+	</div>
+{% endblock %}

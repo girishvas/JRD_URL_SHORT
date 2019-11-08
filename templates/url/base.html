@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+	<title>{% block title %}URL{% endblock %}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{% static 'url/images/icons/favicon.ico' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'url/vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'url/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'url/vendor/animate/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'url/vendor/select2/select2.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'url/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'url/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'url/css/main.css' %}">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-dark bg-primary">
+			<div class="container">
+				<div class="col-md-8">
+					<a class="navbar-brand" href="/"><strong>Home</strong></a>
+					<a class="navbar-brand" href="{% url 'list' %}"><strong>URL List</strong></a>
+					<a class="navbar-brand" href="{% url 'create' %}"><strong>Create</strong></a>
+					<a class="navbar-brand" href="{% url 'logout' %}"><strong>Logout</strong></a>
+				</div>
+			</div>
+		</nav>
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
+		</nav>
+	</header>
+	<div class="limiter">
+		<div class="container-table100">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<!-- <script src="{% static 'url/vendor/jquery/jquery-3.2.1.min.js' %}"></script> -->
+	<script src="{% static 'url/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'url/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'url/vendor/select2/select2.min.js' %}"></script>
+	<script src="{% static 'url/js/main.js' %}"></script>
+</body>
+</html>

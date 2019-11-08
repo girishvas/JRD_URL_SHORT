@@ -1,0 +1,70 @@
+{% extends 'url/base.html' %}
+{% block title %}URL List{% endblock %}
+
+{% block content %}
+	<div class="wrap-table100">
+		<div class="table100">
+			<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/> -->
+			<form action="" method="POST"> 
+				{% csrf_token %}
+				<div class="row">
+					<div class="col-xs-6 col-md-4">
+						<div class="input-group">
+							<input type="text" class="form-control" name="search" value="{{q|title}}" placeholder="Search" id="txtSearch"/>
+							<!-- <div class="input-group-btn">
+								<button class="btn btn-primary" type="submit"> Go
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</div> -->
+						</div>
+					</div>
+					<div class="col-xs-6 col-md-4">
+						<div class="input-group">
+							<select name="sort" class="form-control">
+								<option value="">Select Sort value</option>
+						 		<option value="add_latest"> Latest Added</option>
+						 		<option value="add_old"> First Added</option>
+						 		<option value="updated_latest"> Latest Updated</option>
+						 		<option value="updated_old"> First Updated</option>
+							</select>
+							<div class="input-group-btn">
+								<button class="btn btn-primary" type="submit"> Go
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<br/><br/>
+			<table>
+				<thead>
+					<tr class="table100-head">
+						<th class="column1">#Sl</th>
+						<th class="column2">Name</th>
+						<th class="column3">Full URL</th>
+						<th class="column3">Short URL</th>
+						<th class="column2">Created</th>
+						<th class="column2">Updated</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for url in object_list %}
+						<tr>
+							<td class="column1">{{forloop.counter}}</td>
+							<td class="column2">{{url.name|title}}</td>
+							<td class="column3">{{url.full_url}}</td>
+							<td class="column3"><a target="_blank" href='{{ url.short_url}}'>{{url.short_url}}</a></td>
+							<td class="column2">{{ url.created_on |date:'Y-m-d H:i'}}</td>
+							<td class="column2">{{ url.updated_on |date:'Y-m-d H:i'}}</td>
+						</tr>
+					{% empty %}
+						<tr>
+							<td colspan="5">No Data Found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
